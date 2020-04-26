@@ -20,9 +20,9 @@ const TodoApp = () => {
             {
                id: todos.length ? todos[0].id + 1 : 1,
                content: newTodo,
-               done: false
+               done: false,
             },
-            ...todos
+            ...todos,
          ]);
          setNewTodo('');
       },
@@ -52,7 +52,7 @@ const TodoApp = () => {
       const updatedTodos = todos.map((todo) => {
          return {
             ...todo,
-            done: true
+            done: true,
          };
       });
       setTodos(updatedTodos);
@@ -92,20 +92,26 @@ const TodoApp = () => {
                                     type='checkbox'
                                     onChange={addTodo(todo, index)}
                                  />
+
                                  <div className='d-flex font-italic d-block'>
                                     <samp className={todo.done ? 'done' : ''}>
                                        {todo.content}
                                     </samp>
                                  </div>
                               </div>
-                              <a href='#' onClick={removeTodo(todo)}>
-                                 X
-                              </a>
+                              <i
+                                 onClick={removeTodo(todo)}
+                                 class='fa fa-times'
+                                 aria-hidden='true'
+                              ></i>
                            </li>
                         </ul>
                      ))}
                      <button className='btn-markAllDone' onClick={markAllDone}>
                         Mark All
+                     </button>
+                     <button className='btn-markAllDone' onClick={markAllDone}>
+                        Delite All
                      </button>
                   </div>
                </div>
